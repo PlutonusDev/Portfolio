@@ -1,0 +1,9 @@
+$break-s: 420px;
+
+@media screen and (max-width: $break-s) {
+	.header {
+		margin-left: 0 !important;
+		margin-top: -50px !important;
+		margin-bottom: -40px !important;
+	}
+}
