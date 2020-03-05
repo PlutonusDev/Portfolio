@@ -1,12 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Provider} from 'react-redux';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fab } from '@fortawesome/free-brands-svg-icons'
-import { faCoffee, faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import configureStore, {History} from './store';
 
-import Portfolio from './components/portfolio';
+import {Route, Switch} from 'react-router-dom';
+import {ConnectedRouter} from 'connected-react-router';
 
-library.add(fab, faCoffee, faEnvelope);
+import Root from './components/root';
 
-ReactDOM.render(<Portfolio />, document.getElementById('root'));
+const Store = configureStore();
+
+ReactDOM.render((
+  <Provider store={Store}>
+    <ConnectedRouter history={History}>
+      <Switch>
+        <Route path="/" render={() => (<Root />)} />
+      </Switch>
+    </ConnectedRouter>
+  </Provider>
+), document.getElementById('root'));
